@@ -1,9 +1,9 @@
+import express from "express";
 import passport from "passport";
 import GoogleAuth from "passport-google-oauth20";
 import ErrorHandler from "../utils/errorHandler.js";
 import { User } from "../models/User.js";
 import { catchAsyncError } from "../middleware/catchAsyncError.js";
-import express from "express";
 
 const callbackURL = "/api/v1/auth/google/callback";
 const scope = ["profile", "email"];
@@ -58,7 +58,7 @@ passport.use(
   )
 );
 
-export const router = express.Router();
+const router = express.Router();
 
 router.route("/googlelogin").get(
   passport.authenticate("google", {
@@ -93,3 +93,5 @@ router.route("/google/callback").get(
   }),
   googleCallback
 );
+
+export default router;
