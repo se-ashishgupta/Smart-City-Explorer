@@ -27,11 +27,11 @@ app.use(
 );
 
 //Routes
-// import user from "./routes/userRoutes.js";
-// import { router } from "./Controller/googleAuth.js";
+import user from "./routes/userRoutes.js";
+import { router } from "./Controller/googleAuth.js";
 
-// app.use("/api/v1", user);
-// app.use("/api/v1/auth", router);
+app.use("/api/v1", user);
+app.use("/api/v1/auth", router);
 
 app.get("/", (req, res) => {
   res.send(
